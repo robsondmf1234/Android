@@ -11,6 +11,7 @@ public class FormularioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
         Button botaoSalvar = (Button)findViewById(R.id.formulario_salvar);
