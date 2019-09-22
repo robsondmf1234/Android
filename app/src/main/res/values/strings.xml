@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Lista Alunos</string>
+    <string name="menu_ok">Ok</string>
 </resources>

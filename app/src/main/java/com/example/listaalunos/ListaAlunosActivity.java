@@ -24,11 +24,11 @@ public class ListaAlunosActivity extends AppCompatActivity {
         //Setando o arrayadpter na ListView
         listaAlunos.setAdapter(adapter);
 
-        Button novoAluno = (Button)findViewById(R.id.novo_aluno);
+        Button novoAluno = (Button) findViewById(R.id.novo_aluno);
         novoAluno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentVaiProFormulario = new Intent(ListaAlunosActivity.this,FormularioActivity.class);
+                Intent intentVaiProFormulario = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
                 startActivity(intentVaiProFormulario);
             }
         });
