@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.dao.AlunoDAO;
 import com.example.modelo.Aluno;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -40,8 +41,14 @@ public class FormularioActivity extends AppCompatActivity {
             case R.id.menu_formulario_ok:
                 Aluno aluno = helper.pegaAluno();
 
+                AlunoDAO dao = new AlunoDAO(this);
+                dao.insere(aluno);
+                dao.close();
+
                 //Toast irá mostrar a mensagem "Botao Clicado ao usuario"
                 Toast.makeText(FormularioActivity.this, "Aluno "+aluno.getNome()+" Salvo.", Toast.LENGTH_SHORT).show();
+
+
 
                 //Finaliza a Activity
                 finish();
