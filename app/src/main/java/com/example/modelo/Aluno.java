@@ -1,5 +1,7 @@
 package com.example.modelo;
 
+import androidx.annotation.NonNull;
+
 /**
  * Created by Robson on 22/09/2019
  */
@@ -58,5 +60,11 @@ public class Aluno {
 
     public void setNota(Double nota) {
         this.nota = nota;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getId() + " - " + getNome();
     }
 }

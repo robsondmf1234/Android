@@ -2,12 +2,16 @@ package com.example.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import com.example.modelo.Aluno;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Robson on 22/09/2019
@@ -46,5 +50,28 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
         //metodo que sera responsavel pelo insert into no banco, proprio método vai criar o comando sql
         db.insert("Alunos", null, dados);
+    }
+
+    public List<Aluno> buscaAlunos() {
+        String sql = "SELECT * FROM Alunos";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+
+        List<Aluno> alunos = new ArrayList<Aluno>();
+
+        while (c.moveToNext()) {
+            Aluno aluno = new Aluno();
+            aluno.setId(c.getLong(c.getColumnIndex("id")));
+            aluno.setNome(c.getString(c.getColumnIndex("nome")));
+            aluno.setEndereço(c.getString(c.getColumnIndex("endereco")));
+            aluno.setTelefone(c.getString(c.getColumnIndex("telefone")));
+            aluno.setSite(c.getString(c.getColumnIndex("site")));
+            aluno.setNota(c.getDouble(c.getColumnIndex("nota")));
+
+            alunos.add(aluno);
+        }
+        c.close();
+
+        return alunos;
     }
 }
