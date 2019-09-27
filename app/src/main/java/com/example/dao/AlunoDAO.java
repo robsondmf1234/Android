@@ -32,16 +32,19 @@ public class AlunoDAO extends SQLiteOpenHelper {
     }
 
     public void insere(Aluno aluno) {
-        //Refenrencia ao banco de dados
+        //Referencia ao banco de dados
         SQLiteDatabase db = getWritableDatabase();
 
+        //Guarda uma instancia da classe,para armazenar os valores
         ContentValues dados = new ContentValues();
+        //Método put Insere valores no objeto dados, ex: dados.put( chave , valor)
         dados.put("nome", aluno.getNome());
         dados.put("endereco", aluno.getEndereço());
         dados.put("telefone", aluno.getTelefone());
         dados.put("site", aluno.getSite());
         dados.put("nota", aluno.getNota());
 
+        //metodo que sera responsavel pelo insert into no banco, proprio método vai criar o comando sql
         db.insert("Alunos", null, dados);
     }
 }

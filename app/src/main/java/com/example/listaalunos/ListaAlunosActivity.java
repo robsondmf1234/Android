@@ -9,11 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.dao.AlunoDAO;
+import com.example.modelo.Aluno;
+
+import java.util.List;
+
 public class ListaAlunosActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
+
+
+       // AlunoDAO dao = new AlunoDAO(this);
+        //List<Aluno> alunos = dao.buscaAlunos();
 
         //Lista de Alunos
         String[] alunos = {"Daniel", "Ronaldo", "Jeferson", "Felipe"};
