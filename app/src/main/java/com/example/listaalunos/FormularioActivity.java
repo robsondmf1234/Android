@@ -46,8 +46,7 @@ public class FormularioActivity extends AppCompatActivity {
                 dao.close();
 
                 //Toast irá mostrar a mensagem "Botao Clicado ao usuario"
-                Toast.makeText(FormularioActivity.this, "Aluno "+aluno.getNome()+" Salvo.", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome() + " Salvo.", Toast.LENGTH_SHORT).show();
 
 
                 //Finaliza a Activity
