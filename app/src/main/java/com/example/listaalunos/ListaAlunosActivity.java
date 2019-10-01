@@ -80,6 +80,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 dao.deleta(aluno);
                 dao.close();
 
+                carregaLista();
+
                 //Mostrando o nome do aluno selecionado
                 //Toast.makeText(ListaAlunosActivity.this, "Deletar o aluno " + aluno.getNome(), Toast.LENGTH_LONG).show();
                 return false;
