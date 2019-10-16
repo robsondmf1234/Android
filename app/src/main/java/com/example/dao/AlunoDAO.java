@@ -39,6 +39,13 @@ public class AlunoDAO extends SQLiteOpenHelper {
         //Referencia ao banco de dados
         SQLiteDatabase db = getWritableDatabase();
 
+        ContentValues dados = pegaDadosAluno(aluno);
+
+        //metodo que sera responsavel pelo insert into no banco, proprio método vai criar o comando sql
+        db.insert("Alunos", null, dados);
+    }
+
+    private ContentValues pegaDadosAluno(Aluno aluno) {
         //Guarda uma instancia da classe,para armazenar os valores
         ContentValues dados = new ContentValues();
         //Método put Insere valores no objeto dados, ex: dados.put( chave , valor)
@@ -47,9 +54,7 @@ public class AlunoDAO extends SQLiteOpenHelper {
         dados.put("telefone", aluno.getTelefone());
         dados.put("site", aluno.getSite());
         dados.put("nota", aluno.getNota());
-
-        //metodo que sera responsavel pelo insert into no banco, proprio método vai criar o comando sql
-        db.insert("Alunos", null, dados);
+        return dados;
     }
 
     //Método para buscar alunos
@@ -82,5 +87,14 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
         String[] params = {aluno.getId().toString()};
         db.delete("Alunos", "id=?", params);
+    }
+
+    public void altera(Aluno aluno) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = pegaDadosAluno(aluno);
+
+        String[] params = {aluno.getId().toString()};
+        db.update("Alunos", dados, "id=?", params);
     }
 }

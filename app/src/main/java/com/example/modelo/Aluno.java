@@ -2,10 +2,12 @@ package com.example.modelo;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 /**
  * Created by Robson on 22/09/2019
  */
-public class Aluno {
+public class Aluno implements Serializable {
 
     private Long id;
     private String nome;

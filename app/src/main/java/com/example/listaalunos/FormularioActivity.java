@@ -2,6 +2,7 @@ package com.example.listaalunos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,14 @@ public class FormularioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formulario);
 
         helper = new FormularioHelper(this);
+
+        //Recuperando os valores que estão na Intent
+        Intent intent = getIntent();
+        Aluno aluno = (Aluno) intent.getSerializableExtra("aluno");
+        if (aluno != null) {
+            helper.preencheFormulario(aluno);
+        }
+
     }
 
     @Override
@@ -42,7 +51,12 @@ public class FormularioActivity extends AppCompatActivity {
                 Aluno aluno = helper.pegaAluno();
 
                 AlunoDAO dao = new AlunoDAO(this);
-                dao.insere(aluno);
+                if (aluno.getId() != null){
+                    dao.altera(aluno);
+                }else{
+                    dao.insere(aluno);
+                }
+
                 dao.close();
 
                 //Toast irá mostrar a mensagem "Botao Clicado ao usuario"
