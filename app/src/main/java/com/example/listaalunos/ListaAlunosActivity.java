@@ -1,8 +1,11 @@
 package com.example.listaalunos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Browser;
@@ -82,11 +85,29 @@ public class ListaAlunosActivity extends AppCompatActivity {
         //Recuperando a posição do tem seleciona no contextMenuInfo
         final Aluno aluno = (Aluno) listaAlunos.getItemAtPosition(info.position);
 
+        //Adicionado opção para utilizar a função ligar.
+        MenuItem itemLigar = menu.add("Ligar");
+        itemLigar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (ActivityCompat.checkSelfPermission(ListaAlunosActivity.this, Manifest.permission.CALL_PHONE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(ListaAlunosActivity.this,
+                            new String[]{Manifest.permission.CALL_PHONE}, 123);
+                } else{
+                    Intent intentLigar = new Intent(Intent.ACTION_CALL);
+                    intentLigar.setData(Uri.parse("tel:" + aluno.getTelefone()));
+                    startActivity(intentLigar);
+                }
+                return false;
+            }
+        });
+
         MenuItem itemSMS = menu.add("Enviar SMS");
         Intent intentSMS = new Intent(Intent.ACTION_VIEW);
         intentSMS.setData(Uri.parse("sms:" + aluno.getTelefone()));
         itemSMS.setIntent(intentSMS);
-        
+
         MenuItem itemMapa = menu.add("Visualizar no Mapa");
         Intent intentMapa = new Intent(Intent.ACTION_VIEW);
         intentMapa.setData(Uri.parse("geo:0,0?q=" + aluno.getEndereço()));
