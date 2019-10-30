@@ -3,14 +3,20 @@ package com.example.listaalunos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.dao.AlunoDAO;
 import com.example.modelo.Aluno;
+
+import java.io.File;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -29,7 +35,19 @@ public class FormularioActivity extends AppCompatActivity {
         if (aluno != null) {
             helper.preencheFormulario(aluno);
         }
-
+        //Botao para tirar a foto do aluno
+        Button botaoFoto = findViewById(R.id.formulario_botao_foto);
+        botaoFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //String caminhoFoto = getExternalFilesDir(null) + "/foto.jpg";
+                String caminhoFoto = getExternalFilesDir(null) + "/"+ System.currentTimeMillis() +".jpg";
+                File arquivoFoto = new File(caminhoFoto);
+                intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(arquivoFoto));
+                startActivity(intentCamera);
+            }
+        });
     }
 
     @Override
@@ -51,9 +69,9 @@ public class FormularioActivity extends AppCompatActivity {
                 Aluno aluno = helper.pegaAluno();
 
                 AlunoDAO dao = new AlunoDAO(this);
-                if (aluno.getId() != null){
+                if (aluno.getId() != null) {
                     dao.altera(aluno);
-                }else{
+                } else {
                     dao.insere(aluno);
                 }
 
