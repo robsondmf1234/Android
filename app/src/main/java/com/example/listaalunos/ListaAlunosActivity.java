@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.adapter.AlunosAdapter;
 import com.example.dao.AlunoDAO;
 import com.example.modelo.Aluno;
 
@@ -31,6 +32,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
+        //Armazenando a referencia da instancia da lista de alunos
         listaAlunos = (ListView) findViewById(R.id.lista_alunos);
 
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,10 +65,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
         List<Aluno> alunos = dao.buscaAlunos();
         dao.close();
 
-        //Armazenando a referencia da instancia da lista de alunos
-        listaAlunos = (findViewById(R.id.lista_alunos));
+        AlunosAdapter adapter = new AlunosAdapter(this,alunos);
+
         //ArrayAdpter , responsavel por converter as String da lista em Views,para ser armazenado no ListView
-        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
+        //ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
         //Setando o arrayadpter na ListView
         listaAlunos.setAdapter(adapter);
     }
