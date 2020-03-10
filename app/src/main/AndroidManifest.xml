@@ -4,6 +4,7 @@
     package="com.example.listaalunos">
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <application
 
@@ -42,6 +43,11 @@
             </intent-filter>
 
         </activity>
+        <receiver android:name="com.example.receiver.SMSReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephny.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
