@@ -67,7 +67,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         AlunosAdapter adapter = new AlunosAdapter(this,alunos);
 
-        //ArrayAdpter , responsavel por converter as String da lista em Views,para ser armazenado no ListView
+        //.ArrayAdpter , responsavel por converter as String da lista em Views,para ser armazenado no ListView
         //ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
         //Setando o arrayadpter na ListView
         listaAlunos.setAdapter(adapter);
