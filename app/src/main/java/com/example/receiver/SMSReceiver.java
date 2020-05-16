@@ -21,8 +21,8 @@ public class SMSReceiver extends BroadcastReceiver {
         byte[] pdu = (byte[]) pdus[0];
         String formato = (String) intent.getSerializableExtra("format");
 
-        SmsMessage sms = SmsMessage.createFromPdu(pdu, formato);
-
+      //  SmsMessage sms = SmsMessage.createFromPdu(pdu, formato);
+/*
         String telefone = sms.getDisplayOriginatingAddress();
         AlunoDAO dao = new AlunoDAO(context);
         if (dao.ehAluno(telefone)) {
@@ -31,5 +31,5 @@ public class SMSReceiver extends BroadcastReceiver {
             mp.start();
         }
         dao.close();
-    }
+   */ }
 }

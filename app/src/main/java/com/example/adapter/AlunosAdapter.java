@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by Robson on 27/02/2020
+ * Adapter criado para se adaptar ao novo layout (list_item.xml) que será utilizado
  */
 public class AlunosAdapter extends BaseAdapter {
     private final List<Aluno> alunos;
