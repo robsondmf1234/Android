@@ -8,18 +8,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Browser;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.EnviarAlunosTask;
+import com.example.WebClient;
 import com.example.adapter.AlunosAdapter;
 import com.example.dao.AlunoDAO;
+import com.example.converter.AlunoConverter;
 import com.example.modelo.Aluno;
 
 import java.util.List;
@@ -65,7 +67,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         List<Aluno> alunos = dao.buscaAlunos();
         dao.close();
 
-        AlunosAdapter adapter = new AlunosAdapter(this,alunos);
+        AlunosAdapter adapter = new AlunosAdapter(this, alunos);
 
         //.ArrayAdpter , responsavel por converter as String da lista em Views,para ser armazenado no ListView
         //ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
@@ -77,6 +79,22 @@ public class ListaAlunosActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         carregaLista();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_lista_alunos, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_enviar_notas:
+                new EnviarAlunosTask(this).execute();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     //Criando o menu de contexto
@@ -96,7 +114,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
                         != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(ListaAlunosActivity.this,
                             new String[]{Manifest.permission.CALL_PHONE}, 123);
-                } else{
+                } else {
                     Intent intentLigar = new Intent(Intent.ACTION_CALL);
                     intentLigar.setData(Uri.parse("tel:" + aluno.getTelefone()));
                     startActivity(intentLigar);

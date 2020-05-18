@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Created by Robson on 27/02/2020
- * Adapter criado para se adaptar ao novo layout (list_item.xml) que será utilizado
+ * Adapter criado para se adaptar ao novo layout (list_item.xml) que será utilizado no app
  */
 public class AlunosAdapter extends BaseAdapter {
     private final List<Aluno> alunos;
@@ -51,17 +51,20 @@ public class AlunosAdapter extends BaseAdapter {
 
         View view = convertView;
         if (view == null) {
-            //inflando o xml para uma view
+            //inflando o xml e transformando para View
             view = inflater.inflate(R.layout.list_item, parent, false);
         }
 
+        //pegando a referencia do TextView
         TextView campoNome = view.findViewById(R.id.item_nome);
         campoNome.setText(aluno.getNome());
 
         TextView campoTelefone = view.findViewById(R.id.item_telefone);
         campoTelefone.setText(aluno.getTelefone());
 
+
         ImageView campoFoto = view.findViewById(R.id.item_foto);
+        //Bloco de código para inserir a foto no ImageView
         String caminhoFoto = aluno.getCaminhoFoto();
         if (caminhoFoto != null) {
             Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
