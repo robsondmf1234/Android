@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.EnviarAlunosTask;
+import com.example.ProvasActivity;
 import com.example.WebClient;
 import com.example.adapter.AlunosAdapter;
 import com.example.dao.AlunoDAO;
@@ -92,6 +93,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_enviar_notas:
                 new EnviarAlunosTask(this).execute();
+                break;
+            case R.id.menu_baixar_provas:
+                Intent vaiPraProva = new Intent(this, ProvasActivity.class);
+                startActivity(vaiPraProva);
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -22,6 +22,7 @@ public class WebClient {
 
             connection.connect();
 
+
             Scanner scanner = new Scanner(connection.getInputStream());
             String resposta = scanner.next();
             return resposta;
