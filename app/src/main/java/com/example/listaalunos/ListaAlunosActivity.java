@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.EnviarAlunosTask;
 import com.example.ProvasActivity;
+import com.example.ProvasTabletActivity;
 import com.example.WebClient;
 import com.example.adapter.AlunosAdapter;
 import com.example.dao.AlunoDAO;

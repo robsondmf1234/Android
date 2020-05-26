@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.DetalhesProvasActivity"></activity>
+        <activity android:name="com.example.ProvasTabletActivity"></activity>
+        <activity android:name="com.example.DetalhesProvasActivity" />
         <activity android:name="com.example.ProvasActivity" />
 
         <provider
