@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.listaalunos.R;
-//Adicionando ListaProvaFragment ao frame principal.
+//Adicionando ListaProvaFragment ao frame principal..
 public class ProvasActivity extends AppCompatActivity {
 
     @Override
