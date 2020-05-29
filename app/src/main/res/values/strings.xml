@@ -2,4 +2,7 @@
     <string name="app_name">Lista Alunos</string>
     <string name="menu_ok">Ok</string>
     <string name="enviar_notas">Enviar Notas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

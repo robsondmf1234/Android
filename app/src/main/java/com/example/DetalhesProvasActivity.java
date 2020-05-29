@@ -29,6 +29,7 @@ public class DetalhesProvasActivity extends AppCompatActivity {
         materia.setText(prova.getMateria());
         data.setText(prova.getData());
 
+        //Criando um adapter para popular o ListView dos tópicos
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prova.getTopicos());
         lista.setAdapter(adapter);
     }

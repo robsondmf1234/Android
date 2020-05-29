@@ -22,9 +22,11 @@ import java.util.List;
 
 public class ListaProvasFragment extends Fragment {
 
+    //Construindo a view do Fragment(ex: setContentview no caso de Activity)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //Gerando uma view apartir de um xml
         View view = inflater.inflate(R.layout.fragment_lista_provas, container, false);
 
         List<String> topicosPort = Arrays.asList("Objeto Indireto", "Sujeito", "Obejto Direto");
@@ -34,6 +36,7 @@ public class ListaProvasFragment extends Fragment {
         Prova provaMatematica = new Prova("Matematica", "26/05/2020", topicosMat);
 
         List<Prova> provas = Arrays.asList(provaPortugues, provaMatematica);
+        //Método de contexto nos fragments , é necess´rio utilizar o getContext
         ArrayAdapter<Prova> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, provas);
         ListView lista = view.findViewById(R.id.provas_lista);
         lista.setAdapter(adapter);

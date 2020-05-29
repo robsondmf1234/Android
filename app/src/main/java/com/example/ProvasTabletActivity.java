@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.listaalunos.R;
 
+//Tela utilizada para utilizar os fragments das telas(activity_provas,activity_detalhes_provas)
 public class ProvasTabletActivity extends AppCompatActivity {
 
     @Override
