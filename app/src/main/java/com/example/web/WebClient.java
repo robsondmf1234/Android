@@ -1,4 +1,4 @@
-package com.example;
+package com.example.web;
 
 import java.io.IOException;
 import java.io.PrintStream;

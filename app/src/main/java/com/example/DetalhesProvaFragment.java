@@ -18,8 +18,6 @@ public class DetalhesProvaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detalhes_prova, container, false);
 
-
-
         return view;
     }
 }
