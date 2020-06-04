@@ -16,4 +16,10 @@
         android:title="Baixar Provas"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/menu_mapas"
+        android:icon="@drawable/ic_mapa"
+        android:title="Visualizar mapa"
+        app:showAsAction="always"/>
+
 </menu>
