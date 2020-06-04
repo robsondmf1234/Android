@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.listaalunos.R;
 import com.example.modelo.Prova;
@@ -46,9 +48,9 @@ public class ListaProvasFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Prova prova = (Prova) adapterView.getItemAtPosition(position);
                 Toast.makeText(getContext(), "Clicou na prova de " + prova, Toast.LENGTH_LONG).show();
-                Intent vaiParaDetalhes = new Intent(getContext(), DetalhesProvasActivity.class);
-                vaiParaDetalhes.putExtra("prova", prova);
-                startActivity(vaiParaDetalhes);
+
+                ProvasActivity provasActivity = (ProvasActivity) getActivity();
+                provasActivity.selecionaProva(prova);
             }
         });
 
